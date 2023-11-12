@@ -1,0 +1,17 @@
+double num1, num2, add, sub, mul, div;
+
+    cout<<"Enter Two Number = ";
+
+    cin>> num1>> num2;
+
+    add = num1 + num2;
+    sub = num1 - num2;
+    mul = num1 * num2;
+    div = num1 / num2;
+
+    cout<< "The Results are:- "<<endl;
+
+    cout<< "Addition = "<< add << endl;
+    cout<< "Subtraction = "<< sub << endl;
+    cout<< "Multiplication = "<< mul << endl;
+    cout<< "Division = "<< div << endl;

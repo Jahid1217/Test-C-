@@ -1,0 +1,91 @@
+using System;
+
+public class Fun
+{
+    public void Insert(int[] arr)
+    {
+        Console.WriteLine("Enter the elements of the array:");
+        for (int i = 0; i < arr.Length; i++)
+        {
+            arr[i] = Convert.ToInt32(Console.ReadLine());
+        }
+    }
+
+    public void BubbleSort(int[] arr)
+    {
+        int n = arr.Length;
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = 0; j < n - i - 1; j++)
+            {
+                if (arr[j] > arr[j + 1])
+                {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+}
+
+public class Kid : Fun
+{
+    public int BinarySearch(int[] arr, int item)
+    {
+        int low = 0;
+        int high = arr.Length - 1;
+        while (low <= high)
+        {
+            int mid = (low + high) / 2;
+            if (item == arr[mid])
+            {
+                return mid;
+            }
+            else if (item < arr[mid])
+            {
+                high = mid - 1;
+            }
+            else
+            {
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Enter Array Size: ");
+        int size = Convert.ToInt32(Console.ReadLine());
+        int[] array = new int[size];
+        Kid kid = new Kid();
+
+        kid.Insert(array);
+        kid.BubbleSort(array);
+
+        Console.Write("Sorted array is: ");
+        foreach (var item in array)
+        {
+            Console.Write(item + " ");
+        }
+
+        Console.WriteLine("\nEnter the item to find: ");
+        int itemToFind = Convert.ToInt32(Console.ReadLine());
+
+        int index = kid.BinarySearch(array, itemToFind);
+
+        while (index != -1)
+        {
+            Console.WriteLine("The item is found at Position " + (index + 1));
+            Console.WriteLine("Enter next item to find: ");
+            itemToFind = Convert.ToInt32(Console.ReadLine());
+            index = kid.BinarySearch(array, itemToFind);
+        }
+
+        Console.WriteLine("Better luck next time.");
+    }
+}
